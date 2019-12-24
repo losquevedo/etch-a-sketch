@@ -1,11 +1,56 @@
 // Create a webpage with a 16x16 grid of square divs 
-const container = document.querySelector("#container");
-        
-for(i=0; i < 17; i++) {
-    box = document.createElement("div");
-    box.classList.add("box " + i);
-    container.appendChild(box);
+// Sets important constants and variables
+
+console.log("Setting constants and variables")
+const container = document.getElementById("container");
+let rows = document.getElementsByClassName("gridRow");
+let cells = document.getElementsByClassName("cell");
+
+console.log("Declaring rows function")
+// Takes (rows, columns) input and makes a grid
+function makeRows(rowNum) {
+
+    // Creates rows
+    for (r = 0; r < rowNum; r++) {
+        let row = document.createElement("div");
+        container.appendChild(row).className = "gridRow";
+    };
+};
+console.log("Declaring columns function")
+// Creates columns
+function makeColumns(cellNum) {
+    for (i = 0; i < rows.length; i++) {
+        for (j = 0; j < cellNum; j++) {
+            let newCell = document.createElement("div");
+            rows[j].appendChild(newCell).className = "cell";
+        };
+
+    };
+};
+
+// Creates a default grid sized 16x16
+function defaultGrid() {
+    console.log("Making rows")
+    makeRows(16);
+    console.log("Making columns")
+    makeColumns(16);
 }
+
+window.onload=function() {
+    defaultGrid();
+};
+//First approach
+// const container = document.querySelector("#container");
+        
+// for(i=0; i < 17; i++) {
+//     box = document.createElement("div");
+//     box.style.width = "100px";
+//     box.style.height = "100px";
+//     box.style.background = "white";
+//     box.style.color = "black";
+//     box.classList.add("box_" + i);
+//     container.appendChild(box);
+// }
 
 // Set up a “hover” effect so that the grid divs change color 
 // when your mouse passes over them, leaving a (pixelated) trail through your grid like a pen would. 
