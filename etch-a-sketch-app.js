@@ -29,7 +29,7 @@ function defaultGrid(rowNum, cellNum) {
 };
 
 window.onload=function() {
-    defaultGrid();
+    defaultGrid(16,16);
 };
 
 //Add a button to the top of the screen which will clear the current grid and send the user a popup asking for how many squares per side to make the new grid. 
