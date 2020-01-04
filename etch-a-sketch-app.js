@@ -3,6 +3,7 @@
 
 console.log("Setting constants and variables")
 const container = document.getElementById("container");
+let reset = document.getElementById("reset");
 let rows = document.getElementsByClassName("gridRow");
 let cells = document.getElementsByClassName("cell");
 
@@ -21,7 +22,7 @@ function defaultGrid(rowNum, cellNum) {
         for (j = 0; j < cellNum; j++) {
             let newCell = document.createElement("div");
             newCell.addEventListener('mouseenter', function(event) {
-                event.target.style.color = "black";
+                event.target.style.backgroundColor = "black";
                 });
             rows[j].appendChild(newCell).className = "cell";
         };
@@ -31,6 +32,11 @@ function defaultGrid(rowNum, cellNum) {
 window.onload=function() {
     defaultGrid(16,16);
 };
+
+reset.addEventListener("click", (e) => {
+    cells.backgroundColor = "white";
+    let prompt = window.prompt("Please select a new grid area size (16x16 for example)")
+})
 
 //Add a button to the top of the screen which will clear the current grid and send the user a popup asking for how many squares per side to make the new grid. 
 //Once entered the new grid should be generated in the same total space as before (e.g. 960px wide) and now you’ve got a new sketch pad. 
