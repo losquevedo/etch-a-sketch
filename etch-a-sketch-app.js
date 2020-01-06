@@ -22,18 +22,30 @@ function defaultGrid(gridSize) {
         for (j = 0; j < gridSize; j++) {
             let newCell = document.createElement("div");
             newCell.addEventListener('mouseenter', function(event) {
-                var randomColor = Math.floor(Math.random()*16777215).toString(16);
-                event.target.style.backgroundColor = '#' + randomColor;
+                event.target.style.backgroundColor = 'black';
                 });
             rows[j].appendChild(newCell).className = "cell";
         };
     };
 };
 reset.addEventListener("click", (e) => {
-    removeElementsByClass('gridRow')
-    removeElementsByClass('cell')
     let newGridSize = window.prompt("Please select a new grid area size (16x16 for example)")
-    defaultGrid(newGridSize)
+    var valid = false
+    while (!valid) {
+        if (isNaN(newGridSize)) {
+        newGridSize = window.prompt("That's not a number, please only use numbers!")
+        }
+        else {
+            valid = true
+            removeElementsByClass('gridRow')
+            removeElementsByClass('cell')
+            defaultGrid(newGridSize)
+        }
+    }
+})
+
+colorButton.addEventListener("click", (e) => {
+    randomColor()
 })
 
 window.onload=function() {
@@ -47,6 +59,14 @@ function removeElementsByClass(className){
         elements[0].parentNode.removeChild(elements[0]);
     }
 }
+
+function randomColor() {
+    cells.addEventListener('mouseenter', function(event) {
+                var randomColor = Math.floor(Math.random()*16777215).toString(16);
+                event.target.style.backgroundColor = '#' + randomColor;
+                });
+}
+
 //Add a button to the top of the screen which will clear the current grid and send the user a popup asking for how many squares per side to make the new grid. 
 //Once entered the new grid should be generated in the same total space as before (e.g. 960px wide) and now you’ve got a new sketch pad. 
 
