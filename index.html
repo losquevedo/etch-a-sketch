@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<div id="headcont">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -9,10 +10,15 @@
     <link rel="stylesheet" href="style.css" />
     <h1 id="title">Etch-A-Sketch!</h1>
   </head>
+</div>
 
   <body>
-        <div id="container"></div>
-        <button id = "reset">Reset</button>
+        <div id = "resetdiv">
+          <button id = "reset">Reset Grid</button>
+        </div>
+        <div class = "bgimage"></div>
+        <div id="container">
+        </div>
     <script type = "text/javascript" src = "etch-a-sketch-app.js" ></script>
   </body>
 </html>

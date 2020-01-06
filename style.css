@@ -1,10 +1,32 @@
 
-.h1 {
-   margin: 0 auto;
+* {
+   font-family: 'Roboto Mono', sans-serif;
+}
+
+#headcont {
+   display: flex;
+   justify-content: center;
+}
+
+html,body {
+   background-image: url("etchback.png");
+   background-size: cover;
 }
 
 .body {
-   background-image: url();
+   display: flex;
+   justify-content: center;
+}
+
+.bgimage {
+   background-image: url("etchback.png");
+   background-size: cover;
+   height: 100%;
+}
+
+#resetdiv {
+   display: flex;
+   justify-content: center;
 }
 
 #container {
@@ -24,12 +46,7 @@
  
 .cell {
    display: flex;
-   border: 1px solid gray;
+   border: 1px solid black;
    min-width: 20px;
    min-height: 30px;
- }
-
- #reset {
-    display: flex;
-    justify-content: center;
  }

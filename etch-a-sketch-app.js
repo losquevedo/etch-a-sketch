@@ -22,7 +22,8 @@ function defaultGrid(gridSize) {
         for (j = 0; j < gridSize; j++) {
             let newCell = document.createElement("div");
             newCell.addEventListener('mouseenter', function(event) {
-                event.target.style.backgroundColor = "black";
+                var randomColor = Math.floor(Math.random()*16777215).toString(16);
+                event.target.style.backgroundColor = '#' + randomColor;
                 });
             rows[j].appendChild(newCell).className = "cell";
         };
