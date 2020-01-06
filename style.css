@@ -1,29 +1,35 @@
-.container {
+
+.h1 {
+   margin: 0 auto;
+}
+
+.body {
+   background-image: url();
+}
+
+#container {
  
    max-width: 1335px;
-   margin: 0 auto;
- 
-   /* --:Older Content:--
-  
    display: flex;
    flex-direction: row;
-   flex-basis: 100%;
-   height: 100%; */
+   justify-content: center;
+
 }
  
 .gridRow {
  
    display: flex;
-   flex-flow: row wrap;
-   justify-content: flex-start;
-   /* --:Older Content:--
-  
-   border: 1px solid black;
-   width: auto; */
+   flex-direction: column;
 }
  
 .cell {
+   display: flex;
    border: 1px solid gray;
    min-width: 20px;
    min-height: 30px;
+ }
+
+ #reset {
+    display: flex;
+    justify-content: center;
  }

@@ -9,17 +9,17 @@ let cells = document.getElementsByClassName("cell");
 
 console.log("Declaring rows function")
 // Takes (rows, columns) input and makes a grid
-function defaultGrid(rowNum, cellNum) {
+function defaultGrid(gridSize) {
 
     // Creates rows
-    for (r = 0; r < rowNum; r++) {
+    for (r = 0; r < gridSize; r++) {
         let row = document.createElement("div");
         container.appendChild(row).className = "gridRow";
     };
 
     //Creates columns
     for (i = 0; i < rows.length; i++) {
-        for (j = 0; j < cellNum; j++) {
+        for (j = 0; j < gridSize; j++) {
             let newCell = document.createElement("div");
             newCell.addEventListener('mouseenter', function(event) {
                 event.target.style.backgroundColor = "black";
@@ -28,16 +28,24 @@ function defaultGrid(rowNum, cellNum) {
         };
     };
 };
-
-window.onload=function() {
-    defaultGrid(16,16);
-};
-
 reset.addEventListener("click", (e) => {
-    cells.backgroundColor = "white";
-    let prompt = window.prompt("Please select a new grid area size (16x16 for example)")
+    removeElementsByClass('gridRow')
+    removeElementsByClass('cell')
+    let newGridSize = window.prompt("Please select a new grid area size (16x16 for example)")
+    defaultGrid(newGridSize)
 })
 
+window.onload=function() {
+    defaultGrid(16);
+};
+
+//taken from TorsionSteel's solution cause it was cleaner
+function removeElementsByClass(className){
+    var elements = document.getElementsByClassName(className);
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+}
 //Add a button to the top of the screen which will clear the current grid and send the user a popup asking for how many squares per side to make the new grid. 
 //Once entered the new grid should be generated in the same total space as before (e.g. 960px wide) and now you’ve got a new sketch pad. 
 
