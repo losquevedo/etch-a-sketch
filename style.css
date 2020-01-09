@@ -32,25 +32,29 @@ html,body {
 #container {
  
    max-width: 1335px;
-   max-height: 1335px;
    display: flex;
    flex-direction: row;
    justify-content: center; 
+   margin-left: 40px;
 }
  
 .gridRow {
  
    display: flex;
    flex-direction: column;
-   min-width: 20px;
-   min-height: 30px;
+   min-width: 12px;
+   min-height: 12px;
+
+   border-top: 1px solid black;
+   border-bottom: 1px solid black;
 }
  
 .cell {
    display: flex;
    border: 1px solid black;
-   min-width: 20px;
-   min-height: 30px;
+   min-width: 5px;
+   min-height: 12px;
+   max-width: 12px;
  }
 
 

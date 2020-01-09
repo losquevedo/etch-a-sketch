@@ -11,6 +11,10 @@ console.log("Declaring rows function")
 // Takes (rows, columns) input and makes a grid
 function defaultGrid(gridSize) {
 
+    if (gridSize > 54) {
+        gridSize = 54;
+    }
+
     // Creates rows
     for (r = 0; r < gridSize; r++) {
         let row = document.createElement("div");
@@ -29,12 +33,13 @@ function defaultGrid(gridSize) {
     };
 };
 reset.addEventListener("click", (e) => {
-    let newGridSize = window.prompt("Please select a new grid area size (16x16 for example)")
+    let newGridSize = window.prompt("Please select how many squares to add. Default is 45, Max is 54")
     var valid = false
     while (!valid) {
         if (isNaN(newGridSize)) {
         newGridSize = window.prompt("That's not a number, please only use numbers!")
         }
+
         else {
             valid = true
             removeElementsByClass('gridRow')
@@ -45,7 +50,11 @@ reset.addEventListener("click", (e) => {
 })
 
 colorButton.addEventListener("click", (e) => {
-    randomColor()
+    cells.removeEventListener();
+    cells.addEventListener('mouseenter', function(event) {
+                var randomColor = Math.floor(Math.random()*16777215).toString(16);
+                event.target.style.backgroundColor = '#' + randomColor;
+                });
 })
 
 window.onload=function() {
@@ -60,12 +69,13 @@ function removeElementsByClass(className){
     }
 }
 
-function randomColor() {
-    cells.addEventListener('mouseenter', function(event) {
-                var randomColor = Math.floor(Math.random()*16777215).toString(16);
-                event.target.style.backgroundColor = '#' + randomColor;
-                });
-}
+// function randomColor() {
+//     cells.removeEventListener();
+//     cells.addEventListener('mouseenter', function(event) {
+//                 var randomColor = Math.floor(Math.random()*16777215).toString(16);
+//                 event.target.style.backgroundColor = '#' + randomColor;
+//                 });
+// }
 
 //Add a button to the top of the screen which will clear the current grid and send the user a popup asking for how many squares per side to make the new grid. 
 //Once entered the new grid should be generated in the same total space as before (e.g. 960px wide) and now you’ve got a new sketch pad. 
