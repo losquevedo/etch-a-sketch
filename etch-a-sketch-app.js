@@ -5,7 +5,6 @@ console.log("Setting constants and variables")
 const container = document.getElementById("container");
 let reset = document.getElementById("reset");
 let rows = document.getElementsByClassName("gridRow");
-let cells = document.getElementsByClassName("cell");
 
 console.log("Declaring rows function")
 // Takes (rows, columns) input and makes a grid
@@ -26,6 +25,7 @@ function defaultGrid(gridSize) {
         for (j = 0; j < gridSize; j++) {
             let newCell = document.createElement("div");
             newCell.addEventListener('mouseenter', function(event) {
+                console.log("got here");
                 event.target.style.backgroundColor = 'black';
                 });
             rows[j].appendChild(newCell).className = "cell";
@@ -49,16 +49,20 @@ reset.addEventListener("click", (e) => {
     }
 })
 
-colorButton.addEventListener("click", (e) => {
-    cells.removeEventListener();
-    cells.addEventListener('mouseenter', function(event) {
+colorButton.addEventListener("click", () => {
+    //set up eventHandler to handle both color change sin one function
+    let cells = document.querySelectorAll(".cell");
+    debugger;
+    cells.forEach(element => {
+        element.addEventListener('mouseenter', function(event) {
                 var randomColor = Math.floor(Math.random()*16777215).toString(16);
                 event.target.style.backgroundColor = '#' + randomColor;
-                });
+            });
+    });
 })
 
 window.onload=function() {
-    defaultGrid(16);
+    defaultGrid(45);
 };
 
 //taken from TorsionSteel's solution cause it was cleaner
